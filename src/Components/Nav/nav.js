@@ -1,6 +1,7 @@
 import React from 'react';
 import './nav.css'
-import mensClothing from '../Mens_Clothing/mensClothing';
+import { Link } from 'react-router-dom'
+
 
 
 class Nav extends React.Component {
@@ -14,7 +15,7 @@ class Nav extends React.Component {
         render(){
           
             return(
-                 <div className="navbar navbar-expand-sm navbar-light mb-3">
+                 <div className="navbar navbar-expand-sm navbar-light mb-3 test">
                     {/* <div className="container"> */}
                         
                         
@@ -22,6 +23,7 @@ class Nav extends React.Component {
                             <li className="nav-item dropdown list" >
                                 <a className="nav-link dropdown-toggle text-light" data-toggle="dropdown" href="localhost:3000/#/Mens-clothing">MEN'S</a>
                                     <div className="dropdown-menu">
+                                        <Link to="/Mens-clothing" className="dropdown-item">Shop All</Link>
                                          <a href="#" className="dropdown-item">Tops</a>
                                          <a href="#" className="dropdown-item">Joggers</a>
                                     </div>

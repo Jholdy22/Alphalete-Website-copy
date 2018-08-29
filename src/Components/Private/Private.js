@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import {updateUser} from '../../ducks/users';
+import {updateUser} from '../../ducks/reducer';
 import {connect} from 'react-redux';
 
 class Private extends React.Component {

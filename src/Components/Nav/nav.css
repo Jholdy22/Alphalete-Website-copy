@@ -8,8 +8,15 @@
    }
 
  .list {
-     margin-left: 290px;
+     margin-left: 20px;
  }
+
+ @media (min-width: 576px) {
+    test {
+        width: 560px;
+    }
+}
+
 
  
 

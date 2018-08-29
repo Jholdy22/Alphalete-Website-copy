@@ -11,7 +11,7 @@
     
     font-size: 15px;
     padding-top: 26px;
-    padding-left: 15%
+    padding-left: 3%
 }
 
 .glyphicon  {
@@ -34,5 +34,10 @@ a:hover
      cursor:pointer;  
 }
 
+@media (min-width: 576px) {
+    header {
+        width: 560px;
+    }
+}
 
 

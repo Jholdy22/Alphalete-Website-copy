@@ -4,6 +4,7 @@ const session = require('express-session');
 const axios = require('axios');
 const massive = require('massive');
 const app = express();
+const controller = require('./controller')
 
 const {
     SERVER_PORT,
@@ -15,6 +16,9 @@ const {
     NODE_ENV
 } = process.env
 
+
+
+
 massive(CONNECTION_STRING).then(db => {
     app.set('db', db);
 })
@@ -25,8 +29,9 @@ app.use(session({
     saveUninitialized: true
 }))
 
+app.get('/api/mens-clothing', controller.getClothing)
 app.get('auth/callback', async (req, res) => {
-
+    
     const payload = {
         client_id: REACT_APP_CLIENT_ID,
         client_secret: CLIENT_SECRET,
@@ -34,11 +39,11 @@ app.get('auth/callback', async (req, res) => {
         grant_tyooe: 'authorization_code',
         redirect_uri: `http://${req.headers.host}/auth/callback`
     }
-
+    
     let resWithToken = await axios.post(`https://${REACT_APP_DOMAIN}/userinfo?access_token=${resWithToken.data.access_token}`)
-
+    
     let resWithUserData = await axios.get(`https://${REACT_APP_DOMAIN}/userinfo?access_token=${resWithToken.data.access_token}`)
-
+    
     let {
         email,
         name,

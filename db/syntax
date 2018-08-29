@@ -1,0 +1,21 @@
+create table clothing(
+    id not null primary key,
+    gender varchar(100),
+    category varchar(100),
+    sub_category varchar(100),
+    title varchar(100),
+    color varchar(100),
+    -- size varchar(10),
+    price integer,
+    image text
+)   
+Values (
+    1,
+    'Male',
+    'Hoodies',
+    'Performance',
+    'Performace Hoodie',
+    'black',
+    52,
+    'https://cdn.shopify.com/s/files/1/0667/0133/products/4U8A9557_1024x1024.jpg?v=1533940352'
+)

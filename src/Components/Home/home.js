@@ -30,8 +30,7 @@ class Home extends React.Component {
         <div className="homePage">
          <Header />
          <Nav />
-         <img className="pic1" src={pic1} Alt="Shalley"></img>
-         <img className="pic2" src={pic2} Alt="kenna"></img>
+            
         </div>
         )
     }
