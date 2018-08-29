@@ -5,27 +5,28 @@ import mensClothing from '../Mens_Clothing/mensClothing';
 
 class Nav extends React.Component {
 
-   
+    login(){
+        let {REACT_APP_DOMAIN, REACT_APP_CLIENT_ID} = process.env;
+        let url = `${encodeURIComponent(window.location.origin)}/Account`
+        window.location = `https://${REACT_APP_DOMAIN}/authorize?client_id=${REACT_APP_CLIENT_ID}&scope=openid%20profile%20email&redirect_uri=${url}&response_type=code`
+    }
 
         render(){
-          const style = {
-              color: 'whitesmoke',
-    
-            };
+          
             return(
                  <div className="navbar navbar-expand-sm navbar-light mb-3">
                     {/* <div className="container"> */}
                         
                         
-                        <ul className="navbar-nav  " >
-                            <li className="nav-item dropdown list  " >
-                                <a className="nav-link dropdown-toggle" img style={style}data-toggle="dropdown" href="localhost:3000/#/Mens-clothing">MEN'S</a>
+                        <ul className="navbar-nav" >
+                            <li className="nav-item dropdown list" >
+                                <a className="nav-link dropdown-toggle text-light" data-toggle="dropdown" href="localhost:3000/#/Mens-clothing">MEN'S</a>
                                     <div className="dropdown-menu">
                                          <a href="#" className="dropdown-item">Tops</a>
                                          <a href="#" className="dropdown-item">Joggers</a>
                                     </div>
                             </li>
-                         
+                        
                             <li className="nav-item dropdown">
                                 <a className="nav-link dropdown-toggle text-light"
                                 data-toggle="dropdown" href="">WOMEN'S</a>
@@ -41,7 +42,9 @@ class Nav extends React.Component {
                                 <a className="nav-link text-light" href="#">SUPPORT</a>
                             </li>
                         </ul>
-
+                        <button className="buttonTag"
+                            onClick={this.login}>Account
+                        </button>
                     </div>
                 //  </div>
         )

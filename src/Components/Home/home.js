@@ -2,8 +2,8 @@ import React from 'react';
 import './home.css'
 import Header from '../Header/header';
 import Nav from '../Nav/nav.js';
-
-
+import pic1 from '../pictures/Left_Picture_Main.jpeg';
+import pic2 from '../pictures/Right_Picture_Main.jpg';
 
 
 
@@ -30,7 +30,8 @@ class Home extends React.Component {
         <div className="homePage">
          <Header />
          <Nav />
-         <img src="Left_Picture_Main.jpeg" Alt="Shalley"></img>
+         <img className="pic1" src={pic1} Alt="Shalley"></img>
+         <img className="pic2" src={pic2} Alt="kenna"></img>
         </div>
         )
     }
