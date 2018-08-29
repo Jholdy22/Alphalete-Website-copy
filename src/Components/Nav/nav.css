@@ -1,0 +1,12 @@
+.navbar.navbar-expand-sm.navbar-light.mb-3 {
+    background-color: black;
+    background-image: none;
+    background-repeat: no-repeat;
+    width: 110%;
+    border-radius: 0px;
+   }
+
+ .list {
+     margin-left: 80px;
+ }
+
