@@ -2,20 +2,16 @@
     background-color: black;
     background-image: none;
     background-repeat: no-repeat;
-    width: 110%;
+    width: 100%;
     border-radius: 0px;
-    
+    height: 10px;
    }
 
  .list {
      margin-left: 20px;
  }
 
- @media (min-width: 576px) {
-    test {
-        width: 560px;
-    }
-}
+ 
 
 
  

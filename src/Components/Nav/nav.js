@@ -23,7 +23,7 @@ class Nav extends React.Component {
                             <li className="nav-item dropdown list" >
                                 <a className="nav-link dropdown-toggle text-light" data-toggle="dropdown" href="localhost:3000/#/Mens-clothing">MEN'S</a>
                                     <div className="dropdown-menu">
-                                        <Link to="/Mens-clothing" className="dropdown-item">Shop All</Link>
+                                        <Link to="/Mens-clothing" className="dropdown-item">Hoodies</Link>
                                          <a href="#" className="dropdown-item">Tops</a>
                                          <a href="#" className="dropdown-item">Joggers</a>
                                     </div>

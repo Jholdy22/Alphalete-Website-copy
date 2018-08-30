@@ -22,7 +22,9 @@ class MensClothing extends React.Component {
         const mappedClothing = this.state.clothes.map((clothe, i) => {
             return(
                 <div key={i}>
-                    
+                    <div>{clothe.category}</div>
+                    <img className="images" src={clothe.image} alt=""/>
+                   
                 </div>
             )
         })

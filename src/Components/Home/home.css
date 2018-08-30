@@ -1,32 +1,95 @@
-.container {
-    position: relative;
-    width: 50%;
+body {
+    background-color: black;
 }
 
-.shalley1 {
-    opacity: 1;
-    display: block;
+.body-white {
     width: 100%;
-    height: auto;
+    height: 70em;
+    background-color: white;
+    overflow: hidden;
+}
+.shalley {
+    display: block;
+    filter: gray;
+    -webkit-filter: grayscale(1); 
+    -webkit-transition: all .8s ease-in-out; 
+    position: relative;
+    width: 750px;
+    top: 10px;
+    left: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    float: left;
     transition: .5s ease;
-    backface-visibility: hidden;
-  }
-.middle{
-
-    transition: .5s ease;
-    opacity: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    text-align: center;
 }
 
-.container:hover .image {
-    opacity: 0.3;
-  }
-  
-  .container:hover .middle {
-    opacity: 1;
-  }
+.shalley:hover {
+    filter: none;
+    -moz-box-shadow: 0 0 10px black;
+    -webkit-box-shadow: 0 0 10px black;
+    box-shadow: 0 0 10px black;
+    /* opacity: 0.9; */
+    
+}
+
+.becca {
+    display: block;
+    filter: grey;
+    -webkit-filter: grayscale(2); 
+    -webkit-transition: all .8s ease-in-out; 
+    position: relative;
+    width: 750px;
+    top: -29px;
+    /* padding: 40px; */
+    transition: .5s ease;
+    /* float: left; */
+    margin-left: auto;
+    margin-right: auto;
+    left: 10px;
+}
+
+.becca:hover {
+    filter: none;
+    -moz-box-shadow: 0 0 10px black;
+    -webkit-box-shadow: 0 0 50px black;
+    box-shadow: 0 0 10px black;
+}
+
+
+
+ .ShalButton {
+     display: block;
+     position: relative;
+     float: left;
+     top: 15.6em;
+     right: 16.5em;
+     font-size: 28px;
+     word-spacing:5px;
+     font-family: Helvetica;
+     color: whitesmoke;
+     padding: 4px;
+     border: 2px solid  whitesmoke;
+     border-collapse: separate;
+     background-color: transparent;
+     
+    } 
+
+.becButton {
+    display: block;
+    position: relative;
+    float: right;
+    bottom: 34rem;
+    font-size: 28px;
+    right: 16.5rem;
+    color: white;
+    padding: 4px;
+    border: 2px solid whitesmoke;
+    border-collapse: separate;
+    background-color: transparent;
+    
+}
+
+
+
+ 
+ 

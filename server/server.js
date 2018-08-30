@@ -29,7 +29,13 @@ app.use(session({
     saveUninitialized: true
 }))
 
+
+
 app.get('/api/mens-clothing', controller.getClothing)
+app.get('/api/mens-clothing/hoodies', controller.getHoodies)
+
+
+
 app.get('auth/callback', async (req, res) => {
     
     const payload = {

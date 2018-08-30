@@ -27,10 +27,24 @@ class Home extends React.Component {
             return null;
         }
         return(
-        <div className="homePage">
+        <div className="Body">
          <Header />
          <Nav />
-            
+            <div className="body-white">
+                <div>
+                    <img className="shalley" src={pic1}/>
+                        <div>
+                        <button className="ShalButton">SHOP NEW MEN'S </button>
+                        </div>
+                    
+                </div>
+                <div>
+                    <img className="becca" src={pic2}/>
+                    <div>
+                    <button className="becButton">SHOP NEW WOMEN'S</button>
+                    </div>
+                </div>
+            </div>
         </div>
         )
     }
