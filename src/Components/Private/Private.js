@@ -11,13 +11,12 @@ class Private extends React.Component {
         }
     }
     async componentDidMount(){
-        let res = await axios.get
-        ('/api/user-data')
+        let res = await axios.get('/api/user-data')
         this.props.updateUser(res.data)
     }
     render(){
         console.log(this.props);
-        let{ user } = this.props
+        let { users } = this.props
         return(
             <div>
                 <h1>Acount Details</h1>

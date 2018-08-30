@@ -23,9 +23,9 @@ class Nav extends React.Component {
                             <li className="nav-item dropdown list" >
                                 <a className="nav-link dropdown-toggle text-light" data-toggle="dropdown" href="localhost:3000/#/Mens-clothing">MEN'S</a>
                                     <div className="dropdown-menu">
-                                        <Link to="/Mens-clothing" className="dropdown-item">Hoodies</Link>
-                                         <a href="#" className="dropdown-item">Tops</a>
-                                         <a href="#" className="dropdown-item">Joggers</a>
+                                        <Link to="/hoodies" className="dropdown-item">Hoodies</Link>
+                                         <Link to="/shirts" className="dropdown-item">Tops</Link>
+                                         <Link to="/joggers" className="dropdown-item">Joggers</Link>
                                     </div>
                             </li>
                         
@@ -33,15 +33,16 @@ class Nav extends React.Component {
                                 <a className="nav-link dropdown-toggle text-light"
                                 data-toggle="dropdown" href="">WOMEN'S</a>
                                 <div className="dropdown-menu">
-                                    <a href="#" className="dropdown-item">Tops</a>
-                                    <a href="#" className="dropdown-item">Bottoms</a>
+                                    <Link to='/wHoodies' className="dropdown-item">Hoodies</Link>
+                                    <Link to='/wShirts' className="dropdown-item">Tops</Link>
+                                    <Link to='/wJoggers' className="dropdown-item">Joggers</Link>
                                 </div>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link text-light" href="#">GIFT CARDS</a>
+                                <a className="nav-link text-light">GIFT CARDS</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link text-light" href="#">SUPPORT</a>
+                                <a className="nav-link text-light">SUPPORT</a>
                             </li>
                         </ul>
                         <button className="buttonTag"

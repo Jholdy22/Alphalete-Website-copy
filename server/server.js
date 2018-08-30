@@ -21,6 +21,7 @@ const {
 
 massive(CONNECTION_STRING).then(db => {
     app.set('db', db);
+    listener()
 })
 
 app.use(session({
@@ -31,8 +32,12 @@ app.use(session({
 
 
 
-app.get('/api/mens-clothing', controller.getClothing)
-app.get('/api/mens-clothing/hoodies', controller.getHoodies)
+app.get('/api/all-clothing/:gender', controller.getClothing)
+app.get('/api/clothing/:gender/:category', controller.getSpecificClothing)
+// app.get('/api/mens-clothing/hoodies/:gender/:category', controller.getHoodies)
+// app.get('/api/mens-clothing/shirts/:gender/:category', controller.getShirts)
+// app.get('/api/mens-clothing/joggers/:gender/:category',controller.getJoggers)
+// app.get('/api/test-run', controller.getTest);
 
 
 
@@ -88,6 +93,8 @@ app.get('/api/user-data', envCheck, (req, res) => {
     }
 })
 
-app.listen(SERVER_PORT, () => {
-    console.log(`listening on port: ${SERVER_PORT}`)
-})
+function listener(){
+    app.listen(SERVER_PORT, () => {
+        console.log(`listening on port: ${SERVER_PORT}`)
+    })
+}

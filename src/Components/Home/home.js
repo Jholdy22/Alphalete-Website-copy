@@ -2,8 +2,7 @@ import React from 'react';
 import './home.css'
 import Header from '../Header/header';
 import Nav from '../Nav/nav.js';
-import pic1 from '../pictures/Left_Picture_Main.jpeg';
-import pic2 from '../pictures/Right_Picture_Main.jpg';
+
 
 
 
@@ -20,6 +19,14 @@ class Home extends React.Component {
         setTimeout(() => this.setState({loading: false}), 100)
     }
 
+    linkTo(){
+        this.props.history.push('/mens-clothing')
+    }
+
+    linkTo2(){
+        this.props.history.push('/women-clothing')
+    }
+
     render(){
         const { loading } = this.state;
 
@@ -31,18 +38,12 @@ class Home extends React.Component {
          <Header />
          <Nav />
             <div className="body-white">
-                <div>
-                    <img className="shalley" src={pic1}/>
-                        <div>
+                    <div onClick={() => this.linkTo()}className="pics shalley">
                         <button className="ShalButton">SHOP NEW MEN'S </button>
-                        </div>
-                    
-                </div>
-                <div>
-                    <img className="becca" src={pic2}/>
-                    <div>
-                    <button className="becButton">SHOP NEW WOMEN'S</button>
                     </div>
+                    <div onClick={() => this.linkTo2()}className="becca shalley">
+                        <button className="rightButton">SHOP NEW WOMEN'S
+                    </button> 
                 </div>
             </div>
         </div>

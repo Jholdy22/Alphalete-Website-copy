@@ -1,10 +1,10 @@
 import React from 'react';
-import Nav from '../Nav/nav.js';
-import Header from '../Header/header.js';
+import Nav from '../../Nav/nav.js';
+import Header from '../../Header/header.js';
 import axios from 'axios'
 
 
-class MensClothing extends React.Component {
+class WomensClothing extends React.Component {
     constructor(props){
         super(props);
 
@@ -14,7 +14,7 @@ class MensClothing extends React.Component {
     }
 
     componentDidMount(){
-        axios.get('/api/mens-clothing').then(results => {
+        axios.get('/api/all-clothing/Female').then(results => {
             this.setState({clothes: results.data})
         })
     }
@@ -40,4 +40,4 @@ class MensClothing extends React.Component {
     }
 }
 
-export default MensClothing
+export default WomensClothing
