@@ -10,6 +10,7 @@ import wTops from './Components/Womens_Clothing/womans_All_Clothes/womensClothin
 import wJoggers from './Components/Womens_Clothing/Joggers/wJoggers';
 import wHoodies from './Components/Womens_Clothing/Hoodies/wHoodies';
 import wShirts from './Components/Womens_Clothing/Shirts/wShirts';
+import cart from './Components/Cart/cart';
 
 
 export default (
@@ -24,5 +25,6 @@ export default (
         <Route path='/wJoggers' component={wJoggers} />
         <Route path='/wHoodies' component={wHoodies} />
         <Route path='/wShirts' component={wShirts} />
+        <Route path='/cart' component={cart} />
     </Switch>
 )

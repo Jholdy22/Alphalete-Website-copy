@@ -1,6 +1,8 @@
 import React from 'react';
 import './header.css';
-import '../Cart/cart'
+import '../Cart/cart';
+import {Link} from 'react-router-dom';
+
 
 class header extends React.Component {
     render() {
@@ -11,9 +13,9 @@ class header extends React.Component {
                         <a href="http://localhost:3000/"> ALPHALETE</a>
                     </h1>
                     <div className="search-cart">
-                        <a href="/Cart">
+                        <Link to="/Cart">
                             <span className="glyphicon glyphicon-shopping-cart"></span>
-                        </a>
+                        </Link>
                         <i className="glyphicon glyphicon-search"></i>
                     </div>
                 </header>

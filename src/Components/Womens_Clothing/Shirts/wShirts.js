@@ -16,7 +16,7 @@ class wShirts extends React.Component {
 
 
     componentDidMount(){
-        axios.get('api/all-clothing/Female').then(results => {
+        axios.get('api/clothing/Female/Shirts').then(results => {
             console.log(results)
             this.setState({shirts: results.data})
         })
