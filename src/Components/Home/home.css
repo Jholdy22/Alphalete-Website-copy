@@ -2,7 +2,7 @@ body {
     background-color: black;
 }
 
-.body-white {
+.first-white {
     display:flex;
     justify-content: center;
     /* flex-direction: row; */
@@ -19,12 +19,11 @@ body {
     -webkit-filter: grayscale(1); 
     -webkit-transition: all .8s ease-in-out; 
     width: 47vw;
-    height: 800px;
+    height: 900px;
     margin: 7px;
     transition: .5s ease;
-    
-    
 }
+
 
 .pics {
     background: url('../pictures/Left_Picture_Main.jpeg') center top;
@@ -42,18 +41,18 @@ body {
     box-shadow: 0 0 10px black;
     /* opacity: 0.9; */
 }
- .ShalButton {
-     display: block;
-     font-size: 28px;
-     word-spacing:5px;
-     font-family: Helvetica;
-     color: whitesmoke;
-     padding: 4px;
-     border: 2px solid  whitesmoke;
-     border-collapse: separate;
-     background-color: transparent;
-     
-    } 
+.leftButton {
+    display: block;
+    font-size: 28px;
+    word-spacing:5px;
+    font-family: Helvetica;
+    color: whitesmoke;
+    padding: 4px;
+    border: 2px solid  whitesmoke;
+    border-collapse: separate;
+    background-color: transparent;
+    
+} 
 
 .rightButton {
     display: block;
@@ -67,7 +66,89 @@ body {
     background-color: transparent;
 }
 
+.premium{
+    background: url('../pictures/Premium.jpg') ;
+    background-size: cover;
+}
 
 
- 
- 
+.second-White {
+    display:flex;
+    justify-content: center;
+    /* flex-direction: row; */
+    width: 100%;
+    background-color: white;
+    overflow: hidden;
+}
+.premium{
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    filter: gray;
+    -webkit-filter: grayscale(1); 
+    -webkit-transition: all .8s ease-in-out; 
+    width: 95vw;
+    height: 550px;
+    margin: 7px;
+    transition: .5s ease;
+}
+
+.premium:hover {
+    filter: none;
+    -moz-box-shadow: 0 0 10px black;
+    -webkit-box-shadow: 0 0 10px black;
+    box-shadow: 0 0 10px black;
+}
+
+.premiumButton{
+    display: block;
+    font-size: 28px;
+    word-spacing:5px;
+    font-family: Helvetica;
+    color: whitesmoke;
+    padding: 4px;
+    border: 2px solid  whitesmoke;
+    border-collapse: separate;
+    background-color: transparent;
+}
+
+.emailWhite {
+    display:flex;
+    justify-content: center;
+    /* flex-direction: row; */
+    width: 100%;
+    background-color: white;
+    overflow: hidden;
+}
+
+.greyBox {
+    padding: 20px;
+    width: 94%;
+    height: 200px;
+    background-color: #fcfcfc;
+    margin: 40px;
+}
+
+.find_out_first {
+    font-size: 30px;
+}
+
+h2 {
+    margin: 8px;
+    color: #666666;
+}
+
+.emailBox {
+    width: 45%;
+    height: 50px;
+    margin: 30px;
+    border: none;
+    padding: 20px;
+}
+.emailBox[type='text'] {
+    background-color: #f4f4f4;
+}
+
+.arrowGlyph {
+    vertical-align: middle;
+}

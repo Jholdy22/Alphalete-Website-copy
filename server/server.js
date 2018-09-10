@@ -31,13 +31,11 @@ app.use(session({
 }))
 
 
-
-app.get('/api/all-clothing/:gender', controller.getClothing)
+// app.get('/api/logout', controller.logout);
+app.get('/api/all-clothing/:gender/', controller.getClothing)
 app.get('/api/clothing/:gender/:category', controller.getSpecificClothing)
-// app.get('/api/mens-clothing/hoodies/:gender/:category', controller.getHoodies)
-// app.get('/api/mens-clothing/shirts/:gender/:category', controller.getShirts)
-// app.get('/api/mens-clothing/joggers/:gender/:category',controller.getJoggers)
-// app.get('/api/test-run', controller.getTest);
+app.get('/api/clothing/:sub_category', controller.getPremiumClothing)
+app.post('/api/add-to-cart', controller.addToCart);
 
 
 
@@ -62,16 +60,16 @@ app.get('auth/callback', async (req, res) => {
         sub
     } = resWithUserData;
 
-    // let db = req.app.get('db');
-    // let foundUser = await db.find_user([sub])
-    // if (founderUser[0]) {
-    //     req.session.user = foundUser[0];
-    //     res.redirect('/#/private')
-    // } else {
-    //     let createdUser = await db.create_user([name, email, picture, sub])
-    //     req.session.user = createdUser[0];
-    //     res.redirect('/#/private')
-    // }
+    let db = req.app.get('db');
+    let foundUser = await db.find_user([sub])
+    if (founderUser[0]) {
+        req.session.user = foundUser[0];
+        res.redirect('/#/account')
+    } else {
+        let createdUser = await db.create_user([name, email, picture, sub])
+        req.session.user = createdUser[0];
+        res.redirect('/#/account')
+    }
 })
 
 function envCheck(req, res, next) {
@@ -92,6 +90,10 @@ app.get('/api/user-data', envCheck, (req, res) => {
         res.status(401).send("Not a chance")
     }
 })
+app.get('/auth/logout', (req, res) => {
+    req.session.destroy();
+    res.redirect('http://localhost:3000/#/')
+  })
 
 function listener(){
     app.listen(SERVER_PORT, () => {

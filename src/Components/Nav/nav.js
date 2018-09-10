@@ -1,17 +1,19 @@
 import React from 'react';
 import './nav.css'
-import { Link } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
+import Login from '../Login/Login';
+import axios from 'axios'
 
 
 
 class Nav extends React.Component {
 
-    login(){
-        let {REACT_APP_DOMAIN, REACT_APP_CLIENT_ID} = process.env;
-        let url = `${encodeURIComponent(window.location.origin)}/Account`
-        window.location = `https://${REACT_APP_DOMAIN}/authorize?client_id=${REACT_APP_CLIENT_ID}&scope=openid%20profile%20email&redirect_uri=${url}&response_type=code`
-    }
 
+    logout(){
+        axios.get('api/logout').then(res => {
+            this.props.history.push('/')
+        })
+    }
         render(){
           
             return(
@@ -44,17 +46,16 @@ class Nav extends React.Component {
                             <li className="nav-item">
                                 <a className="nav-link text-light">SUPPORT</a>
                             </li>
-                        </ul>
-                        <button className="buttonTag"
-                            onClick={this.login}>Account
-                        </button>
-                    </div>
-                //  </div>
+                    </ul>
+                        <Login />
+                    <div />
+                        <button className='nav-buttons' onClick={() => this.logout()}>Logout</button> 
+                  </div>
         )
     }
 }
 
-export default Nav
+export default withRouter(Nav)
 
 
 

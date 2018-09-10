@@ -27,6 +27,10 @@ class Home extends React.Component {
         this.props.history.push('/women-clothing')
     }
 
+    linkTo3(){
+        this.props.history.push('/premium-clothing')
+    }
+
     render(){
         const { loading } = this.state;
 
@@ -37,15 +41,33 @@ class Home extends React.Component {
         <div className="Body">
          <Header />
          <Nav />
-            <div className="body-white">
+            <div className="first-white">
                     <div onClick={() => this.linkTo()}className="pics shalley">
-                        <button className="ShalButton">SHOP NEW MEN'S </button>
+                        <button className="leftButton">SHOP NEW MEN'S </button>
                     </div>
                     <div onClick={() => this.linkTo2()}className="becca shalley">
                         <button className="rightButton">SHOP NEW WOMEN'S
                     </button> 
                 </div>
             </div>
+            <div className="second-White">
+                    <div onClick={() => this.linkTo3()}className="premium">
+                        <button className="premiumButton">SHOP PREMIUM</button>
+                    </div>
+            </div>
+                    <div className="emailWhite">
+                        <div className="greyBox">
+                            <div>
+                                <h1 className="find_out_first">FIND OUT FIRST</h1>
+                                <h2>Promotions, new products and sales. Directly to your inbox</h2>
+                                <input className="emailBox" type="text" placeholder="Your email"/>
+                                <button type="" class="btn btn-info">
+                                    <span className="glyphicon glyphicon-chevron-right  arrowGlyph"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div className=""></div>
         </div>
         )
     }
