@@ -11,10 +11,12 @@ const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
 const ACTIVE_CART = 'ACTIVE_CART';
 const STORE_CART_DATA = 'STORE_CART_DATA';
 
-export const updateUser = (user) => ({
-  type: UPDATE_USER,
-  payload: user
-});
+export function updateUser(userObj) {
+    return {
+        type: UPDATE_USER,
+        payload: userObj
+    }
+};
 
 export const storeProducts = (products) => ({
   type: ALL_PRODUCTS,

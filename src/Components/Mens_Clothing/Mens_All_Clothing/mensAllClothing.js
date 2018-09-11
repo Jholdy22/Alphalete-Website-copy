@@ -22,11 +22,12 @@ class MensClothing extends React.Component {
         })
     }
 
-    addToCart(e){
-        axios.post('/api/add-to-cart',{id: e.id, quantity: this.state.quantity}).then(results => {
+    addToCart(productId){
+        axios.post(`/api/add-to-cart/${productId}`).then(results => {
             console.log(results)
             this.setState({quantity: ''})
         })
+        // console.log(productId)
     }
 
     updateQuantity(val){
@@ -37,13 +38,12 @@ class MensClothing extends React.Component {
         const mappedClothing = this.state.clothes.map((clothe, i) => {
             return(
                 <div className="outerDiv" key={i}>
-                    <div className="Clothes"> {clothe.category} </div>
                     <div className="imageDiv">
                     <img className="images" src={clothe.image} alt=""/>
-                    <div className=""> ${clothe.price}</div>
+                    <div className="mensTitle"> {clothe.title} </div>
+                    <button className="add_to_cart" onClick={() => this.addToCart(clothe.id)}>Add to Cart</button>
+                    <div className="mensPriceTag"> ${clothe.price}</div>
                     </div>
-                   <button  type="button"> onClick={() => this.addToCart(clothe)}>Add to Cart</button>
-                      
                 </div>
             )
         })
@@ -65,4 +65,4 @@ function mapStateToProps(state){
         products: state.products
     }
 }
-export default MensClothing(mapStateToProps)
+export default (mapStateToProps, (MensClothing))

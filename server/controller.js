@@ -42,9 +42,12 @@ module.exports = {
                 })
             },
             addToCart: (req,res,next) => {
-                const dbInstance = req.app.get('db');
-                dbInstance.add_to_cart([req.session.user.cart_id, req.body.id, req.body.quantity])
-                    .then(() => res.sendStatus(200))
+                const db = req.app.get('db');
+                const {product_id} = req.params;
+                const {user_id} = req.session.user;
+
+                db.add_to_cart([product_id, user_id, 1])
+                    .then((response) => res.status(200).send(response))
                     .catch(err => {
                         res.status(500).send({errorMessage: "Something went wrong!"})
                         console.log(err);

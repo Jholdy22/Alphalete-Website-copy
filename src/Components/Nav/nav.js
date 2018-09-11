@@ -47,9 +47,8 @@ class Nav extends React.Component {
                                 <a className="nav-link text-light">SUPPORT</a>
                             </li>
                     </ul>
-                        <Login />
+                        <Login className="login_front_page"/>
                     <div />
-                        <button className='nav-buttons' onClick={() => this.logout()}>Logout</button> 
                   </div>
         )
     }

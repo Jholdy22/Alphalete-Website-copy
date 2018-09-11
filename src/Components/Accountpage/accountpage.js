@@ -25,25 +25,7 @@ async componentDidMount(){
       console.log(this.props)
       let {user} = this.props;
 
-    //   const mainStyle = {
-    //     height: '100vh',
-    //     width: '100%',
-    //     display: 'flex',
-    //     flexDirection: 'column',
-    //     flexWrap: 'nowrap',
-    //     justifyContent: 'center',
-    //     alignItems: 'center',
-    //     alignContent: 'center',
-    // }
-    // const imgStyle = {
-    //     width: '300px',
-    //     height: '300px',
-    //     boxShadow: '3px 5px',
-    //     marginBottom: '10px'
-    // }
-    // const textStyle = {
-    //     color: '#dfdfdf'
-    // }
+   
 
       return (
         <div>
@@ -66,20 +48,7 @@ async componentDidMount(){
               <a href="http://localhost:4000/auth/logout"></a>
                 <button>Log Out</button>
           </div>
-          {/* <div style={mainStyle} className='accountpage-main'>
-            <div className='account-content-container'>
-                <h2 style={textStyle}>Account Information</h2>
-                {
-                    user.user_name? (
-                        <div>
-                            <img style={imgStyle} src={user.picture} alt="" />
-                            <h6 style={textStyle}>Account Holder: {user.user_name}</h6>
-                            <h6 style={textStyle}>Account Email: {user.email}</h6>
-                        </div>
-                    ) : <p> <Link to='/'>Here</Link></p>
-                }
-            </div>
-        </div> */}
+         
           </div>
         
       )

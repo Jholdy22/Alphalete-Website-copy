@@ -4,7 +4,14 @@
 -- And c.gender = COALESCE(null, c.gender)
 -- and c.id = COALESCE(13, c.id)
 
+drop table if exists cart;
 
+create table cart (
+    cart_id serial primary key,
+    product_id int,
+    user_id int,
+    quantity int
+);   
 
 create table clothing(
     id not null primary key,
@@ -16,7 +23,7 @@ create table clothing(
     -- size varchar(10),
     price integer,
     image text
-)   
+);
 Values (
     {
         "id": 1,
@@ -209,4 +216,4 @@ Values (
     'https://cdn.shopify.com/s/files/1/0667/0133/products/4U8A9640_1024x1024.jpg?v=1533949786'
     }
     )
-)
+);

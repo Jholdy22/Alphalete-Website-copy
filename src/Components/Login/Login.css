@@ -1,7 +1,10 @@
 .buttonTag {
-    color: red;
+    color: whitesmoke;
     border: none;
     position: absolute;
+    background-color: transparent;
+    font-size: 19px;
+    bottom: 12.1px;
 }
 
 
