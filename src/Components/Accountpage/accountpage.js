@@ -16,8 +16,8 @@ class Accountpage extends Component {
         }
     }
 
-async componentDidMount(){
-    let res = axios.get('/api/user-data')
+  async componentDidMount(){
+    let res = await axios.get('/api/user-data')
     this.props.updateUser(res.data)
     }
 
@@ -45,8 +45,9 @@ async componentDidMount(){
                   )
                   :(<p>Log Out</p>)
               }
-              <a href="http://localhost:4000/auth/logout"></a>
+              <a href="http://localhost:4000/auth/logout">
                 <button>Log Out</button>
+              </a>
           </div>
          
           </div>

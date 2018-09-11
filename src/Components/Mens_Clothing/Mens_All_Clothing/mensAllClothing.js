@@ -13,7 +13,7 @@ class MensClothing extends React.Component {
             clothes: [],
             quantity: ''
         }
-        this.updateQuantity = this.updateQuantity.bind(this)
+        // this.updateQuantity = this.updateQuantity.bind(this);
     }
 
     componentDidMount(){
@@ -30,19 +30,19 @@ class MensClothing extends React.Component {
         // console.log(productId)
     }
 
-    updateQuantity(val){
-        this.setState({quantity: val})
-    }
+    // updateQuantity(val){
+    //     this.setState({quantity: val})
+    // }
 
     render(){
         const mappedClothing = this.state.clothes.map((clothe, i) => {
             return(
                 <div className="outerDiv" key={i}>
-                    <div className="imageDiv">
-                    <img className="images" src={clothe.image} alt=""/>
+                    <div className="outerImageDiv">
+                        <img className="images" src={clothe.image} alt=""/>
                     <div className="mensTitle"> {clothe.title} </div>
-                    <button className="add_to_cart" onClick={() => this.addToCart(clothe.id)}>Add to Cart</button>
                     <div className="mensPriceTag"> ${clothe.price}</div>
+                    <button type="button" className="add_to_cart" onClick={() => this.addToCart(clothe.id)}> ADD TO CART</button>
                     </div>
                 </div>
             )

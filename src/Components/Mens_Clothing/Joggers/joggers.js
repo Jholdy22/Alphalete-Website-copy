@@ -33,7 +33,9 @@ class Joggers extends React.Component {
             <div>
                 <Header />
                 <Nav />
+                <div className="hoodie_body_white">
                 {mappedJoggers}
+                </div>
             </div>
         )
     }

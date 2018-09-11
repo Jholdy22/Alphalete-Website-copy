@@ -48,7 +48,7 @@ app.get('/auth/callback', async (req, res) => {
         redirect_uri: `http://${req.headers.host}/auth/callback`
     }
 
-    let resWithToken = await axios.post(`https://${REACT_APP_DOMAIN}/oath/token`, payload)
+    let resWithToken = await axios.post(`https://${REACT_APP_DOMAIN}/oauth/token`, payload)
 
     let resWithUserData = await axios.get(`https://${REACT_APP_DOMAIN}/userinfo?access_token=${resWithToken.data.access_token}`)
 
@@ -57,12 +57,12 @@ app.get('/auth/callback', async (req, res) => {
         name,
         picture,
         sub
-    } = resWithUserData;
+    } = resWithUserData.data;
 
     let db = req.app.get('db');
 
     let foundUser = await db.find_user([sub])
-    if (founderUser[0]) {
+    if (foundUser[0]) {
         req.session.user = foundUser[0];
         res.redirect('/#/account')
     } else {
@@ -74,8 +74,8 @@ app.get('/auth/callback', async (req, res) => {
 
 function envCheck(req, res, next) {
     if (NODE_ENV === 'dev') {
-        req.app.get('db').get_user_by_id().then(userWithIdOne => {
-            res.session.user = userWithIdOne[0]
+        req.app.get('db').user_auth_id().then(userWithIdOne => {
+            req.session.user = userWithIdOne[0]
             next();
         })
     } else {
@@ -90,10 +90,12 @@ app.get('/api/user-data', envCheck,(req, res) => {
         res.status(401).send("Not a chance")
     }
 })
-// app.get('/auth/logout', (req, res) => {
-//     req.session.destroy();
-//     res.redirect('http://localhost:3000/#/')
-// })
+
+app.get('/auth/logout', (req, res) => {
+    req.session.destroy();
+    res.redirect('http://localhost:3000/#/')
+})
+
 
 app.listen(SERVER_PORT, () => {
     console.log(`listening on port: ${SERVER_PORT}`)

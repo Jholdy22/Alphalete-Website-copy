@@ -4,7 +4,11 @@
     position: absolute;
     background-color: transparent;
     font-size: 19px;
-    bottom: 12.1px;
+    bottom: 14px;
+}
+
+.buttonTag:focus {
+    outline: 0;
 }
 
 

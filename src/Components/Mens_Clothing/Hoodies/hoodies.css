@@ -1,0 +1,55 @@
+.hoodies_white_box {
+    display: flex;
+    width: 100%;
+    background-color: white;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.outer_Hoodie_Image_Div {
+    width: 50%;
+    margin: 10px;
+    height: 55%;
+    /* cursor: pointer; */
+}
+
+.hoodie_images {
+    width: 280px;
+    height: 250px;
+    position: relative;
+    left: 40px;
+}
+
+.hoodieTitle {
+    font-size: 15px;
+    position: relative;
+    left: 100px;
+    background-color: whitesmoke;
+}
+
+.hoodie_to_cart {
+    outline-color: none;
+    position: relative;
+    bottom: 10px;
+    left: 100px;
+    margin: 4px;
+    /* padding: 0; */
+    border: none;
+    color: white;
+    background: black;
+    font-size: 15px;
+    padding-bottom: 4px;
+    padding-top: 4px;
+}
+
+.hoodie_to_cart:focus {
+    outline: 0;
+}
+
+.mensHoodiePrice {
+    /* text-align: center;  */
+    position: relative;
+    right: -20px;
+    top: 13px;
+    color: black;
+}

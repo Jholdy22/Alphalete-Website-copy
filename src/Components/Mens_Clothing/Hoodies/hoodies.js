@@ -6,37 +6,49 @@ import axios from 'axios'
 
 
 class Hoodies extends React.Component {
-        constructor(props){
-            super(props);
+    constructor(props) {
+        super(props);
 
-            this.state= {
-                hoodies: []
-            }
+        this.state = {
+            hoodies: [],
+            quantity: ''
         }
+    }
 
-        componentDidMount(){
-            axios.get('api/clothing/Male/Hoodies').then(results => {
-                console.log(results)
-                this.setState({hoodies: results.data})
-            })
-        }
+    componentDidMount() {
+        axios.get('api/clothing/Male/Hoodies').then(results => {
+            console.log(results)
+            this.setState({ hoodies: results.data })
+        })
+    }
 
-    render(){
+    addToCart(productId) {
+        axios.post(`/api/add-to-cart/${productId}`).then(results => {
+            console.log(results)
+            this.setState({ quantity: '' })
+        })
+    }
+
+    render() {
         const mappedHoodies = this.state.hoodies.map((hood, i) => {
-            return(
+            return (
                 <div key={i}>
-                    <h3>{hood.category}</h3>
-                    <img className="images" src={hood.image} alt=''/>
+                    <div className="outer_Hoodie_Image_Div">
+                        <img className="hoodie_images" src={hood.image} alt='' />
+                        <div className="hoodieTitle">{hood.title}</div>
+                        <div className="mensHoodiePrice"> ${hood.price}</div>
+                        <button className="hoodie_to_cart" onClick={() => this.addToCart(hood.id)}>ADD TO CART</button>
+                    </div>
                 </div>
             )
         })
 
 
-        return(
-            <div className="body">
+        return (
+            <div>
                 <Header />
                 <Nav />
-                <div className="whiteBox">
+                <div className="hoodies_white_box">
                     {mappedHoodies}
                 </div>
             </div>
@@ -44,4 +56,10 @@ class Hoodies extends React.Component {
     }
 }
 
-export default Hoodies
+function mapStateToProps(state) {
+    return {
+        product: state.product
+    }
+}
+
+export default (mapStateToProps, (Hoodies))
