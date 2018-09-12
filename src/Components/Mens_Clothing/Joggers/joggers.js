@@ -9,7 +9,8 @@ class Joggers extends React.Component {
         super(props);
 
         this.state = {
-            joggers: []
+            joggers: [],
+            quantity: ''
         }
     }
 
@@ -20,12 +21,24 @@ class Joggers extends React.Component {
         })
     }
 
+    addToCart(productId){
+        axios.post(`/api/add-to-cart/${productId}`).then(results => {
+            console.log(results)
+            this.setState({quantity: ''})
+        })
+    }
+
     render(){
         const mappedJoggers = this.state.joggers.map((jogger, i) => {
             return(
                 <div key={i}>
-                    <h3>{jogger.category}</h3>
-                    <img className="images" src={jogger.image} alt=""/>
+                <div className="outer_jogger_div">
+                    <img className="jogger_images" src={jogger.image} alt=""/>
+                    <div className="joggerTitle">{jogger.title}</div>
+                    <div className="joggerPriceTag"> ${jogger.price}</div>
+                    <button type="button" className="jogger_to_cart" onClick={() =>
+                    this.addToCart(jogger.id)}>ADD TO CART</button>
+                    </div>
                 </div>
             )
         })
@@ -41,4 +54,10 @@ class Joggers extends React.Component {
     }
 }
 
-export default Joggers
+function mapStateToProps(state){
+    return{
+        products: state.products
+    }
+}
+
+export default (mapStateToProps, (Joggers))

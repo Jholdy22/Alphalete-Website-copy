@@ -1,0 +1,51 @@
+.wJoggers_whitebox {
+    display: flex;
+    width: 100%;
+    background-color: white;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.wJoggers_outer_div {
+    width: 50%;
+    margin: 10px;
+    height: 50%;
+}
+
+.wJoggers_images {
+    width: 280px;
+    height: 250px;
+    position: relative;
+    left: 40px;
+}
+
+.wJoggers_title {
+    font-size: 15px;
+    position: relative;
+    left: 100px;
+    background-color: whitesmoke;
+}
+
+.wJoggers_to_cart {
+    outline-color: none;
+    position: relative;
+    bottom: 10px;
+    left: 100px;
+    margin: 4px;
+    border: none;
+    color: white;
+    background: black;
+    font-size: 15px;
+    padding-bottom: 4px;
+    padding-top: 4px;
+}
+
+.wJoggers_to_cart:focus {
+    outline: 0;
+}
+
+.wJoggers_price {
+    position: relative;
+    right: -26px;
+    top: 13px;
+}

@@ -10,7 +10,8 @@ class wShirts extends React.Component {
         super(props);
 
         this.state = {
-            shirts: []
+            shirts: [],
+            quantity: ''
         }
     }
 
@@ -21,13 +22,23 @@ class wShirts extends React.Component {
             this.setState({shirts: results.data})
         })
     }
+    addToCart(productId) {
+        axios.post(`/api/add-to-cart/${productId}`).then(results => {
+            console.log(results)
+            this.setState({ quantity: '' })
+        })
+    }
 
     render(){
         const shirts = this.state.shirts.map((shirt, i) => {
             return(
                 <div key={i}>
-                    <h3>{shirt.category}</h3>
-                    <img className="images" src={shirt.image} alt=""/>
+                    <div className="wShirts_outer_div">
+                    <img className="wShirts_images" src={shirt.image} alt=""/>
+                    <div className="wShirts_title">{shirt.title}</div>
+                    <div className="wShirts_price">${shirt.price}</div>
+                    <button className="wShirts_to_cart" onClick={() => this.addToCart(shirt.id)}>ADD TO CART</button>
+                    </div>
                 </div>
             )
         })
@@ -36,7 +47,9 @@ class wShirts extends React.Component {
             <div>
                 <Header />
                 <Nav />
-                {shirts}
+                <div className="wShirts_whitebox">
+                    {shirts}
+                </div>
             </div>
         )
     }

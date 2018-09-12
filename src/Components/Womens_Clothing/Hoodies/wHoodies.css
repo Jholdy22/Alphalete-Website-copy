@@ -1,0 +1,51 @@
+.wHoodies_box {
+    display: flex;
+    width: 100%;
+    background-color: white;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.outer_wHoodies {
+    width: 50%;
+    margin: 10px;
+    height: 50%;
+}
+
+.wHoodies_images {
+    width: 280px;
+    height: 250px;
+    position: relative;
+    left: 40px;
+}
+
+.wHoodies_title {
+    font-size: 15px;
+    position: relative;
+    left: 100px;
+    background-color: whitesmoke;
+}
+
+.wHoodies_to_cart {
+    outline-color: none;
+    position: relative;
+    bottom: 10px;
+    left: 100px;
+    margin: 4px;
+    border: none;
+    color: white;
+    background: black;
+    font-size: 15px;
+    padding-bottom: 4px;
+    padding-top: 4px;
+}
+
+.wHoodies_to_cart:focus {
+    outline: 0;
+}
+
+.wHoodies_price {
+    position: relative;
+    right: -26px;
+    top: 13px;
+}

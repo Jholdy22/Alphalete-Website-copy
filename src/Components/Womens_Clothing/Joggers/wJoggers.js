@@ -9,7 +9,8 @@ class Joggers extends React.Component {
         super(props);
 
         this.state = {
-            joggers: []
+            joggers: [],
+            quantity: ''
         }
     }
 
@@ -19,13 +20,23 @@ class Joggers extends React.Component {
             this.setState({joggers: results.data})
         })
     }
+    addToCart(productId) {
+        axios.post(`/api/add-to-cart/${productId}`).then(results => {
+            console.log(results)
+            this.setState({ quantity: '' })
+        })
+    }
 
     render(){
         const mappedJoggers = this.state.joggers.map((jogger, i) => {
             return(
                 <div key={i}>
-                    <h3>{jogger.category}</h3>
-                    <img className="images" src={jogger.image} alt=""/>
+                    <div className="wJoggers_outer_div">
+                    <img className="wJoggers_images" src={jogger.image} alt=""/>
+                    <div className="wJoggers_title">{jogger.title}</div>
+                    <div className="wJoggers_price">${jogger.price}</div>
+                    <button className="wJoggers_to_cart"onClick={() => this.addToCart(jogger.id)}>ADD TO CART</button>
+                    </div>
                 </div>
             )
         })
@@ -33,7 +44,9 @@ class Joggers extends React.Component {
             <div>
                 <Header />
                 <Nav />
-                {mappedJoggers}
+                <div className="wJoggers_whitebox">
+                    {mappedJoggers}
+                </div>
             </div>
         )
     }

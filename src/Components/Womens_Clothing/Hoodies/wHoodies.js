@@ -6,37 +6,49 @@ import axios from 'axios'
 
 
 class wHoodies extends React.Component {
-        constructor(props){
-            super(props);
+    constructor(props) {
+        super(props);
 
-            this.state= {
-                hoodies: []
-            }
+        this.state = {
+            hoodies: [],
+            quantity: ''
         }
+    }
 
-        componentDidMount(){
-            axios.get('api/clothing/Female/Hoodies').then(results => {
-                console.log(results)
-                this.setState({hoodies: results.data})
-            })
-        }
+    componentDidMount() {
+        axios.get('api/clothing/Female/Hoodies').then(results => {
+            console.log(results)
+            this.setState({ hoodies: results.data })
+        })
+    }
 
-    render(){
+    addToCart(productId) {
+        axios.post(`/api/add-to-cart/${productId}`).then(results => {
+            console.log(results)
+            this.setState({ quantity: '' })
+        })
+    }
+
+    render() {
         const mappedHoodies = this.state.hoodies.map((hood, i) => {
-            return(
+            return (
                 <div key={i}>
-                    <h3>{hood.category}</h3>
-                    <img className="images" src={hood.image} alt=''/>
+                    <div className="outer_wHoodies">
+                        <img className="wHoodies_images" src={hood.image} alt='' />
+                        <div className="wHoodies_title">{hood.title}</div>
+                        <div className="wHoodies_price">${hood.price}</div>
+                        <button className="wHoodies_to_cart" onClick={() => this.addToCart(hood.id)}>ADD TO CART</button>
+                    </div>
                 </div>
             )
         })
 
 
-        return(
-            <div className="body">
+        return (
+            <div>
                 <Header />
                 <Nav />
-                <div className="whiteBox">
+                <div className="wHoodies_box">
                     {mappedHoodies}
                 </div>
             </div>

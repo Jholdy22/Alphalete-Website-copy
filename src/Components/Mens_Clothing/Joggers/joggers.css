@@ -5,3 +5,47 @@
     flex-wrap: wrap;
     flex-direction: row;
 }
+
+.outer_jogger_div {
+    width: 50%;
+    margin: 10px;
+    height: 50%;
+}
+
+.jogger_images {
+    width: 280px;
+    height: 250px;
+    position: relative;
+    left: 40px;
+}
+
+.joggerTitle {
+    font-size: 15px;
+    position: relative;
+    left: 100px;
+    background-color: whitesmoke;
+}
+
+.jogger_to_cart {
+    outline-color: none;
+    position: relative;
+    bottom: 10px;
+    left: 100px;
+    margin: 4px;
+    border: none;
+    color: white;
+    background: black;
+    font-size: 15px;
+    padding-bottom: 4px;
+    padding-top: 4px;
+}
+
+.jogger_to_cart:focus {
+    outline: 0;
+}
+
+.joggerPriceTag {
+    position: relative;
+    right: -26px;
+    top: 13px;
+}
