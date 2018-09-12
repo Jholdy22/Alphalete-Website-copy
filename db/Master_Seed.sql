@@ -1,8 +1,8 @@
--- SELECT *
--- FROM clothing c
--- WHERE c.category = COALESCE('Joggers', c.category)
--- And c.gender = COALESCE(null, c.gender)
--- and c.id = COALESCE(13, c.id)
+select cl.id, cl.category, cl.title, cl.image, cl.price, c.quantity, c.total, c.user_id
+from cart c 
+join clothing cl on cl.id = c.product_id
+where user_id=4
+order by cart_id
 
 drop table if exists cart;
 

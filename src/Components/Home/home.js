@@ -15,6 +15,8 @@ class Home extends React.Component {
         };
     }
 
+
+
     componentDidMount(){
         setTimeout(() => this.setState({loading: false}), 1000)
     }
@@ -67,7 +69,6 @@ class Home extends React.Component {
                             </div>
                         </div>
                     </div>
-                    <div className=""></div>
         </div>
         )
     }

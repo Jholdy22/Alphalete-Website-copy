@@ -6,6 +6,7 @@ const massive = require('massive');
 const app = express();
 const controller = require('./controller')
 
+
 const {
     SERVER_PORT,
     SECRET,
@@ -31,10 +32,14 @@ app.use(session({
 
 
 // app.get('/api/logout', controller.logout);
+app.get('/api/display-all', controller.displayAll)
 app.get('/api/all-clothing/:gender/', controller.getClothing)
 app.get('/api/clothing/:gender/:category', controller.getSpecificClothing)
 app.get('/api/clothing/:sub_category', controller.getPremiumClothing)
 app.post('/api/add-to-cart/:product_id', controller.addToCart);
+app.delete('/api/product/:cart_id', controller.deleteProduct);
+
+
 
 
 
