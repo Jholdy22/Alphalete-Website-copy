@@ -23,7 +23,7 @@ class Nav extends React.Component {
                         
                         <ul className="navbar-nav" >
                             <li className="nav-item dropdown list" >
-                                <a className="nav-link dropdown-toggle text-light" data-toggle="dropdown" href="localhost:3000/#/Mens-clothing">MEN'S</a>
+                                <a className="nav-link dropdown-toggle text-light" data-toggle="dropdown">MEN'S</a>
                                     <div className="dropdown-menu">
                                         <Link to="/hoodies" className="dropdown-item">Hoodies</Link>
                                          <Link to="/shirts" className="dropdown-item">Tops</Link>
@@ -33,7 +33,7 @@ class Nav extends React.Component {
                         
                             <li className="nav-item dropdown">
                                 <a className="nav-link dropdown-toggle text-light"
-                                data-toggle="dropdown" href="">WOMEN'S</a>
+                                data-toggle="dropdown">WOMEN'S</a>
                                 <div className="dropdown-menu">
                                     <Link to='/wHoodies' className="dropdown-item">Hoodies</Link>
                                     <Link to='/wShirts' className="dropdown-item">Tops</Link>

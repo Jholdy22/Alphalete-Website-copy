@@ -10,7 +10,7 @@ class header extends React.Component {
             <div>
                 <header className="header-tag">
                     <h1 className="alpha-header">
-                        <a href="http://localhost:3000/"> ALPHALETE</a>
+                        <a href={process.env.REACT_APP_LOGIN}> ALPHALETE</a>
                     </h1>
                     <div className="search-cart">
                         <Link to="/Cart">

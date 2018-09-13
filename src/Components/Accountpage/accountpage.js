@@ -46,7 +46,7 @@ class Accountpage extends Component {
                         )
                             : (<p>Log Out</p>)
                     }
-                    <a href="http://localhost:4000/auth/logout">
+                    <a href={process.env.REACT_APP_LOGOUT}>
                         <button>Log Out</button>
                     </a>
                 </div>

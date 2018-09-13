@@ -6,6 +6,7 @@ const massive = require('massive');
 const app = express();
 const controller = require('./controller')
 
+app.use( express.static( `${__dirname}/../build` ) );
 
 const {
     SERVER_PORT,
@@ -99,7 +100,7 @@ app.get('/api/user-data', envCheck,(req, res) => {
 
 app.get('/auth/logout', (req, res) => {
     req.session.destroy();
-    res.redirect('http://localhost:3000/#/')
+    res.redirect(process.env.REACT_APP_LOGIN)
 })
 
 
