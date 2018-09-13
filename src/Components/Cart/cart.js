@@ -28,7 +28,7 @@ class Cart extends React.Component {
             // this.props.storeCartData(results.data)
             this.getCart()
             this.setState({total: 0})
-            // this.calculateTotal()
+            this.calculateTotal()
         })
     }
 
@@ -36,23 +36,32 @@ class Cart extends React.Component {
         axios.get('/api/display-all').then(results => {
             console.log(results.data)
             this.props.storeCartData(results.data)
-            // this.calculateTotal()
+            this.calculateTotal()
         }
         )
+    }
+
+    updateQuantity(input){
+        const {quantity, p_id} = input;
+        axios.put(`/api/quantity/${quantity}/${p_id}`).then(results =>{
+            this.props.storeCartData(results.data);
+            this.setState({total:0})
+            this.calculateTotal()
+        })
     }
 
     handleQuantity(val){
         this.setState({quantity: val})
     }
 
-    // calculateTotal(){
-    //     let total = this.props.shoppingCart.map((e) => {
+    calculateTotal(){
+        let total = this.props.shoppingCart.map((e) => {
             
-    //         var updateTotal = this.state.total + e.price * e.quantity;
-    //         console.log('update', updateTotal)
-    //         this.setState({total: updateTotal })
-    //     })
-    // }
+            var updateTotal = this.state.total + e.price * e.quantity;
+            console.log('update', updateTotal)
+            this.setState({total: updateTotal })
+        })
+    }
     render(){
         let shoppingCartDisplay = this.props.shoppingCart.map((e,i) => {
             console.log(e)
@@ -61,6 +70,20 @@ class Cart extends React.Component {
                 <img className="cart_images" src={e.image} alt=""/>
                         <h3>{e.title}</h3>
                         <h4>${e.price}</h4>
+
+                        <form class="form-inline">
+                            <select class="custom-select my-sm-1 mr-sm-2" id="inlineFormCustomSelectPref" onChange={e => this.handleQuantity(e.target.value)}>
+                                <option value="0" selected>{e.quantity}</option>
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        <button onClick={() => this.updateQuantity({quantity: this.state.quantity,
+                            p_id: e.id})}>save</button>  
+                        </form>  
                         <div>
                         <button type='button' className='close' aria-label='Close' onClick={() => this.deleteFromCart(e.cart_id)}>
                                 <span aria-hidden='true'>&times;</span>
@@ -74,6 +97,8 @@ class Cart extends React.Component {
                 <Header />
                 <Nav />
                 <div className='displayDivContainer'>
+                    <h2 className="Cart_tag">CART</h2>
+                    
                     <div>
                         {shoppingCartDisplay[0] ?
                         <div className='displayDiv' >

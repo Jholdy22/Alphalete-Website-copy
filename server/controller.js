@@ -78,5 +78,24 @@ module.exports = {
                     res.status(500).send({errorMessage: "Something went wrong!"})
                     console.log(err)
             })
-    }
+    },
+    quantity: (req,res,next) => {
+        const dbInstance = req.app.get('db');
+        const { quantity, p_id} = req.params;
+        const {id} = req.session.user;
+        const {body} = req;
+        // const {quantity=1, id} = req.body;
+
+        dbInstance.quantity([quantity, p_id, id])
+        .then((response) => {
+            console.log(response)
+            res.status(200).send("it worked")
+            // dbInstance.join_all([req.session.user.id])
+            // .then(product => res.status(200).send(product))
+        })
+        .catch(err => {
+            res.status(500).send({errorMessage: "Something went wrong!"})
+            console.log(err);
+        })
+    },
 }

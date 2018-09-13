@@ -1,0 +1,14 @@
+.account_body {
+    display: flex;
+    background-color: white;
+    width:100%;
+}
+
+.account_details {
+    position: relative;
+    left: 600px;
+}
+
+.account_image {
+
+}

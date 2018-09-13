@@ -63,7 +63,7 @@ class Home extends React.Component {
                                 <h1 className="find_out_first">FIND OUT FIRST</h1>
                                 <h2>Promotions, new products and sales. Directly to your inbox</h2>
                                 <input className="emailBox" type="text" placeholder="Your email"/>
-                                <button type="" class="btn btn-info">
+                                <button type="" className="btn btn-info">
                                     <span className="glyphicon glyphicon-chevron-right  arrowGlyph"></span>
                                 </button>
                             </div>
