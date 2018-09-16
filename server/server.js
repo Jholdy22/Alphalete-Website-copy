@@ -5,6 +5,9 @@ const axios = require('axios');
 const massive = require('massive');
 const app = express();
 const controller = require('./controller')
+const config = require('./config');
+const stripe = require('stripe')(process.env.STRIPE_SECRET);
+
 
 app.use( express.static( `${__dirname}/../build` ) );
 
@@ -15,10 +18,9 @@ const {
     REACT_APP_DOMAIN,
     CLIENT_SECRET,
     CONNECTION_STRING,
-    NODE_ENV
+    NODE_ENV,
+    STRIPE_SECRET
 } = process.env
-
-
 
 
 massive(CONNECTION_STRING).then(db => {
@@ -43,6 +45,12 @@ app.put('/api/quantity/:quantity/:p_id', controller.quantity);
 
 
 
+// stripe checkout endpoint
+app.post('/api/payment', controller.handlePayment);
+
+
+
+
 
 
 app.get('/auth/callback', async (req, res) => {
@@ -52,7 +60,7 @@ app.get('/auth/callback', async (req, res) => {
         client_secret: CLIENT_SECRET,
         code: req.query.code,
         grant_type: 'authorization_code',
-        redirect_uri: process.env.AUTH_URI
+        redirect_uri: `${process.env.PROTOCOL}://${req.headers.host}/auth/callback`
     }
 
     let resWithToken = await axios.post(`https://${REACT_APP_DOMAIN}/oauth/token`, payload)

@@ -5,7 +5,9 @@ import './cart.css'
 import {removeFromCart, storeCartData} from '../../ducks/reducer';
 import {connect} from 'react-redux';
 import axios from 'axios';
+import StripeCheckout from 'react-stripe-checkout';
 import {withRouter} from 'react-router';
+import stripe from './../../stripeKey';
 
 
 
@@ -23,12 +25,20 @@ class Cart extends React.Component {
       this.getCart()
     }
 
+    onToken = (token) => {
+        token.card = void 0
+        axios.post('/api/payment', {token, amount: this.state.amount}).then(res => {
+            console.log(res)
+        })
+    }
+
+
     deleteFromCart(cart_id){
         axios.delete(`/api/product/${cart_id}`).then(results => {
             // this.props.storeCartData(results.data)
             this.getCart()
             this.setState({total: 0})
-            this.calculateTotal()
+
         })
     }
 
@@ -36,7 +46,7 @@ class Cart extends React.Component {
         axios.get('/api/display-all').then(results => {
             console.log(results.data)
             this.props.storeCartData(results.data)
-            this.calculateTotal()
+
         }
         )
     }
@@ -46,21 +56,12 @@ class Cart extends React.Component {
         axios.put(`/api/quantity/${quantity}/${p_id}`).then(results =>{
             this.props.storeCartData(results.data);
             this.setState({total:0})
-            this.calculateTotal()
+            
         })
     }
 
     handleQuantity(val){
         this.setState({quantity: val})
-    }
-
-    calculateTotal(){
-        let total = this.props.shoppingCart.map((e) => {
-            
-            var updateTotal = this.state.total + e.price * e.quantity;
-            console.log('update', updateTotal)
-            this.setState({total: updateTotal })
-        })
     }
     render(){
         let shoppingCartDisplay = this.props.shoppingCart.map((e,i) => {
@@ -71,19 +72,10 @@ class Cart extends React.Component {
                         <h3>{e.title}</h3>
                         <h4>${e.price}</h4>
 
-                        <form class="form-inline">
-                            <select class="custom-select my-sm-1 mr-sm-2" id="inlineFormCustomSelectPref" onChange={e => this.handleQuantity(e.target.value)}>
-                                <option value="0" selected>{e.quantity}</option>
-                                <option value="0">0</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                            </select>
+
                         <button onClick={() => this.updateQuantity({quantity: this.state.quantity,
                             p_id: e.id})}>save</button>  
-                        </form>  
+                        
                         <div>
                         <button type='button' className='close' aria-label='Close' onClick={() => this.deleteFromCart(e.cart_id)}>
                                 <span aria-hidden='true'>&times;</span>
@@ -98,11 +90,22 @@ class Cart extends React.Component {
                 <Nav />
                 <div className='displayDivContainer'>
                     <h2 className="Cart_tag">CART</h2>
-                    
+                        <button>CHECK OUT</button>
                     <div>
                         {shoppingCartDisplay[0] ?
                         <div className='displayDiv' >
                             {shoppingCartDisplay}
+                            <div className='checkout'>
+                                <h3>Total: ${this.state.total}</h3>
+                                <StripeCheckout 
+                                name="Stripe Demo inc."
+                                description="Dolla Dolla Bills"
+                                image="http://via.placeholder.com/100x100"
+                                token={this.onToken}
+                                stripeKey={process.env.REACT_APP_STRIPE_KEY}
+                                amount={this.state.amount} //total*100 //link this to total once you have set it up
+                                />
+                            </div>
                         </div>
                         : <div>
                             <h1>Your cart is empty!</h1>
@@ -110,9 +113,9 @@ class Cart extends React.Component {
                     </div>
                 </div>
             </div>
-        )
-}
-}
+                )
+            }          
+          }
 
 
         function mapStateToProps(state){

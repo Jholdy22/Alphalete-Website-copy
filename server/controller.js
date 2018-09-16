@@ -1,3 +1,7 @@
+require('dotenv').config();
+const stripe = require('stripe')(process.env.STRIPE_SECRET);
+
+
 module.exports = {
 
     getClothing: (req, res, next) => {
@@ -57,45 +61,68 @@ module.exports = {
                 console.log(err);
             })
     },
-    displayAll: (req,res,next) => {
+    displayAll: (req, res, next) => {
         const dbInstance = req.app.get('db');
 
         dbInstance.join_all([req.session.user.id])
             .then(all => {
-                 res.status(200).send(all)})
+                res.status(200).send(all)
+            })
             .catch(err => {
-                res.status(500).send({errorMessage: "Something went wrong!"})
+                res.status(500).send({ errorMessage: "Something went wrong!" })
                 console.log(err)
             })
     },
-    deleteProduct: (req,res,next) => {
+    deleteProduct: (req, res, next) => {
         const dbInstance = req.app.get('db');
 
         dbInstance.delete_product([req.params.cart_id])
             .then(all => {
-                res.status(200).send(all)})
-                .catch(err => {
-                    res.status(500).send({errorMessage: "Something went wrong!"})
-                    console.log(err)
+                res.status(200).send(all)
+            })
+            .catch(err => {
+                res.status(500).send({ errorMessage: "Something went wrong!" })
+                console.log(err)
             })
     },
-    quantity: (req,res,next) => {
+    quantity: (req, res, next) => {
         const dbInstance = req.app.get('db');
-        const { quantity, p_id} = req.params;
-        const {id} = req.session.user;
-        const {body} = req;
+        const { quantity, p_id } = req.params;
+        const { id } = req.session.user;
+        const { body } = req;
         // const {quantity=1, id} = req.body;
 
         dbInstance.quantity([quantity, p_id, id])
-        .then((response) => {
-            console.log(response)
-            res.status(200).send("it worked")
-            // dbInstance.join_all([req.session.user.id])
-            // .then(product => res.status(200).send(product))
-        })
-        .catch(err => {
-            res.status(500).send({errorMessage: "Something went wrong!"})
-            console.log(err);
-        })
+            .then((response) => {
+                console.log(response)
+                res.status(200).send("it worked")
+
+            })
+            .catch(err => {
+                res.status(500).send({ errorMessage: "Something went wrong!" })
+                console.log(err);
+            })
     },
+    handlePayment: (req, res) => {
+        const { amount, token:{id}} = req.body
+        stripe.charges.create(
+            {
+                amount: amount,
+                currency: "usd",
+                source: id,
+                description: "Test charge from Jace"
+            },
+            (err, charge) => {
+                if(err) {
+                    console.log(err)
+                    return res.status(500).send(err)
+                } else {
+                    console.log(charge)
+                    return res.status(200).send(charge)
+                }
+            }
+        )
+    },
+   
 }
+    

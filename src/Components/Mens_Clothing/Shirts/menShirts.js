@@ -56,4 +56,10 @@ class MenShirts extends React.Component {
     }
 }
 
-export default MenShirts
+function mapStateToProps(state){
+    return{
+        products: state.products
+    }
+}
+
+export default (mapStateToProps, (MenShirts))

@@ -19,7 +19,9 @@
     "react-preloading-screen": "^1.0.2",
     "react-scripts": "1.1.4",
     "react-simple-dropdown": "^3.2.3",
-    "sessions": "0.0.2-7"
+    "react-stripe-checkout": "^2.6.3",
+    "sessions": "0.0.2-7",
+    "stripe": "^6.10.0"
   },
   "scripts": {
     "start": "react-scripts start",
