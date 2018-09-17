@@ -42,6 +42,8 @@ app.get('/api/clothing/:sub_category', controller.getPremiumClothing)
 app.post('/api/add-to-cart/:product_id', controller.addToCart);
 app.delete('/api/product/:cart_id', controller.deleteProduct);
 app.put('/api/quantity/:quantity/:p_id', controller.quantity);
+app.put('/api/clear-cart', controller.clearCart)
+
 
 
 

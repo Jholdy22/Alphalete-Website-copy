@@ -90,7 +90,7 @@ module.exports = {
         const { quantity, p_id } = req.params;
         const { id } = req.session.user;
         const { body } = req;
-        // const {quantity=1, id} = req.body;
+
 
         dbInstance.quantity([quantity, p_id, id])
             .then((response) => {
@@ -104,25 +104,39 @@ module.exports = {
             })
     },
     handlePayment: (req, res) => {
-        const { amount, token:{id}} = req.body
-        stripe.charges.create(
-            {
-                amount: amount,
-                currency: "usd",
-                source: id,
-                description: "Test charge from Jace"
-            },
-            (err, charge) => {
-                if(err) {
-                    console.log(err)
-                    return res.status(500).send(err)
-                } else {
-                    console.log(charge)
-                    return res.status(200).send(charge)
+        
+            const { amount, token:{id}} = req.body
+            stripe.charges.create(
+                {
+                    amount: amount,
+                    currency: "usd",
+                    source: id,
+                    description: "Test charge from Travis"
+                },
+                (err, charge) => {
+                    if(err) {
+                        console.log(err)
+                        return res.status(500).send(err)
+                    } else {
+                        console.log(charge)
+                        return res.status(200).send(charge)
+                    }
                 }
-            }
-        )
-    },
-   
+            )
+        },
+    clearCart: (req,res,next) => {
+        const dbInstance = req.app.get('db');
+        dbInstance.clear_cart([req.session.user.id, req.session.user.cart_id])
+        .then((a) => {
+            // dbInstance.create_cart(req.session.user.id)
+            // .then(cart => {
+            //     req.session.user.cart_id = cart[0].id;
+            res.status(200).send(a)
+            })
+            .catch(err => {
+                res.status(500).send({errorMessage: "Something went wrong!"})
+                console.log(err);
+            })
+    }
 }
     
