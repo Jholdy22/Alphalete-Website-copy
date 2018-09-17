@@ -112,7 +112,7 @@ module.exports = {
                     amount: amount,
                     currency: "usd",
                     source: id,
-                    description: "Test charge from Travis"
+                    description: "Test charge from Jace"
                 },
                 (err, charge) => {
                     if(err) {
@@ -125,19 +125,18 @@ module.exports = {
                 }
             )
         },
-    clearCart: (req,res,next) => {
-        const dbInstance = req.app.get('db');
-        dbInstance.clear_cart([req.session.user.id, req.session.user.cart_id])
-        .then((a) => {
-            // dbInstance.create_cart(req.session.user.id)
-            // .then(cart => {
-            //     req.session.user.cart_id = cart[0].id;
-            res.status(200).send(a)
-            })
-            .catch(err => {
-                res.status(500).send({errorMessage: "Something went wrong!"})
-                console.log(err);
-            })
-    }
-}
-    
+        // clearCart:(req, res, next) => {
+        //     let dbInstance = req.app.get("db");
+        //     // const { id } = req.session.user;
+        //     console.log("clear the cart");
+          
+        
+        //     dbInstance
+        //       .clear_cart([req.session.user.user_id])
+        //       .then(response => res.status(200).send(response))
+        //       .catch(err => {
+        //         res.status(500).send("Oops! Something went wrong.");
+        //         console.log(err);
+        //       });
+        //   }
+        // };

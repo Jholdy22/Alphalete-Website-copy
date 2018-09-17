@@ -30,7 +30,7 @@ class Cart extends React.Component {
     onToken = (token) => {
         token.card = void 0
         axios.post(`/api/payment`, { token, amount: this.state.amount })
-            .then(axios.put('/api/clear-cart'));
+            .then(this.props.history.push('/'));
     }
 
 
