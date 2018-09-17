@@ -124,7 +124,8 @@ module.exports = {
                     }
                 }
             )
-        },
+        }
+    }
         // clearCart:(req, res, next) => {
         //     let dbInstance = req.app.get("db");
         //     // const { id } = req.session.user;
@@ -139,4 +140,4 @@ module.exports = {
         //         console.log(err);
         //       });
         //   }
-        // };
+        // }
