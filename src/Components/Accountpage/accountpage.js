@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { updateUser } from './../../ducks/reducer'
 import Nav from '../Nav/nav';
 import Header from '../Header/header';
-import { Link } from 'react-router-dom';
+
 import './accountpage.css';
 
 class Accountpage extends Component {
@@ -47,7 +47,7 @@ class Accountpage extends Component {
                             : (<p>Log Out</p>)
                     }
                     <a href={process.env.REACT_APP_LOGOUT}>
-                        <button>Log Out</button>
+                        <button className="logOut_button" >Log Out</button>
                     </a>
                 </div>
 

@@ -119,7 +119,7 @@ class Cart extends React.Component {
                                     <h3>Total: {`$${this.state.total}.00`}</h3>
                                     <StripeCheckout
                                         name="Stripe Demo inc."
-                                        description="Dolla Dolla Bills"
+                                        description="Alphalete Pay"
                                         image=""
                                         token={this.onToken}
                                         stripeKey={process.env.REACT_APP_STRIPE_KEY}
