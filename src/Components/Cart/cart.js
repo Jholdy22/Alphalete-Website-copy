@@ -74,6 +74,7 @@ class Cart extends React.Component {
         })
     }
     render() {
+        console.log(this.state.total)
         let shoppingCartDisplay = this.props.shoppingCart.map((e, i) => {
             console.log(e)
             return (
@@ -83,7 +84,7 @@ class Cart extends React.Component {
                     <h4>{`$${e.price}.00`}</h4>
                     <form class="form-inline">
                         <select class="custom-select my-sm-1 mr-sm-2 quantity_update" id="inlineFormCustomSelectPref" onChange={e => this.handleQuantity(e.target.value)}>
-                            <option value="0" selected>{e.quantity}</option>
+                            <option value={e.quantity} selected>{e.quantity}</option>
                             <option value="0">0</option>
                             <option value="1">1</option>
                             <option value="2">2</option>

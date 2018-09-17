@@ -90,12 +90,13 @@ module.exports = {
         const { quantity, p_id } = req.params;
         const { id } = req.session.user;
         const { body } = req;
+        console.log(quantity, p_id, id)
 
 
         dbInstance.quantity([quantity, p_id, id])
             .then((response) => {
                 console.log(response)
-                res.status(200).send("it worked")
+                res.status(200).send(response)
 
             })
             .catch(err => {

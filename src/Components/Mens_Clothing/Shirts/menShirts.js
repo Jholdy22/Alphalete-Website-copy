@@ -31,14 +31,14 @@ class MenShirts extends React.Component {
     }
 
     render(){
-        const shirts = this.state.shirts.map((shirt, i) => {
+        const mappedShirts = this.state.shirts.map((shirt, i) => {
             return(
                 <div key={i}>
                     <div className="outer_shirt_div">
                     <img className="shirt_images" src={shirt.image} alt=""/>
                     <div className="shirt_title">{shirt.title}</div>
                     <div className="shirt_price_tag">${shirt.price}</div>
-                    <button className="shirt_to_cart"onclick={() => this.addToCart(shirt.id)}>ADD TO CART</button>
+                    <button className="shirt_to_cart" onclick={() => this.addToCart(shirt.id)}>ADD TO CART</button>
                     </div>
                 </div>
             )
@@ -49,7 +49,7 @@ class MenShirts extends React.Component {
                 <Header />
                 <Nav />
                 <div className="shirt_body_white">
-                {shirts}
+                {mappedShirts}
                 </div>
             </div>
         )
